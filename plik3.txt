@@ -1,0 +1,98 @@
+#include <stdio.h> 
+#include <conio.h> 
+struct dzial 
+{ 
+int  kod; 
+char nazwa[32]; 
+char stanowisko[16]; 
+}; 
+typedef struct dzial DPT; 
+struct pracownik  
+{ 
+DPT d;           
+/* zagniezdzona struktura */ 
+int id; 
+char nam
+e
+[32]; 
+}; 
+typedef struct pracownik EMPLY; 
+      /* 
+deklaracje 
+funkcji 
+*/ 
+void InfoDisplay(EMPLY *ptr); 
+/* drukuj dane */ 
+void InfoEnter(EMPLY *ptr);     
+/* wczytaj dane */ 
+void m
+a
+in(void) 
+{ 
+EMPLY info = { 
+{01, 
+"Marketing", 
+"Manager" 
+}, 
+0001, 
+"B. Sm
+ith" 
+}; 
+clrscr(); 
+62
+printf
+("Przyklad:\n"); 
+Inf
+o
+Display(&inf
+o
+); 
+InfoEnter(&info); 
+printf("\nOto dane, ktore wprowadziles:\n"); 
+Inf
+o
+Display(&inf
+o
+); 
+return 0; 
+} 
+void InfoDisplay(EMPLY *ptr) 
+{ 
+printf("Nazwisko: %s\n", ptr->nam
+e
+); 
+printf("Num
+e
+r: %04d\n", ptr->id); 
+printf
+("Nazwa dzialu: %s\n", ptr->d.nazwa); 
+printf("Num
+e
+r dzialu: %02d\n", ptr->d.kod); 
+printf("Stanowisko: %s\n", ptr->d.stanowisko); 
+} 
+void InfoEnter(EMPLY *ptr) 
+{ 
+printf
+("\nW
+p
+isz swoje dane:\n"); 
+printf
+("Nazwisko:\n"); 
+gets((*ptr).nam
+e
+); 
+printf("Funkcja:\n"); 
+gets((*ptr).d.stanowisko); 
+printf
+("Nazwa dzialu:\n"); 
+gets((*ptr).d.nazwa); 
+printf
+("Num
+e
+r dzialu:\n"); 
+scanf("%d", &(ptr->d.kod)); 
+printf("Twoj num
+er ID #:\n"); 
+scanf("%d", &(ptr->id)); 
+} 
